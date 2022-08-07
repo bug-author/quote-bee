@@ -14,7 +14,6 @@ class _HomePageState extends State<HomePage> {
     "All",
     "Most Liked",
     "Most Retweeted",
-    "By Year",
     "Favourites"
   ];
 
@@ -44,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           elevation: 0.0,
           actions: [
             IconButton(
-              icon: Icon(Icons.nightlight_round, size: 21),
+              icon: const Icon(Icons.nightlight_round, size: 21),
               onPressed: () {},
             ),
           ]),
@@ -62,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: navbarItems.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       print(navbarItems[index]);
                     },
                     child: Container(
@@ -95,37 +94,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             )
-          ],
-        ),
-      ),
-      bottomNavigationBar: Theme(
-        data: ThemeData(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-        ),
-        child: BottomNavigationBar(
-          backgroundColor: darkerBlue,
-          selectedItemColor: Colors.white,
-          // https://stackoverflow.com/questions/52182384/flutter-how-to-hide-remove-title-of-bottomnavigationbaritem
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          currentIndex: bottomBarIdx,
-          onTap: (index) => setState(() => bottomBarIdx = index),
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 35,
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                size: 35,
-              ),
-              label: 'Search',
-            ),
           ],
         ),
       ),

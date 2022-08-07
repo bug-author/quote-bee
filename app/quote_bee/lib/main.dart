@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:provider/provider.dart';
+import 'package:quote_bee/pages/show_quotes.dart';
+import 'package:quote_bee/provider/quote_provider.dart';
 import './pages/home_page.dart';
 
 void main() {
@@ -12,12 +14,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Quote Bee',
-      theme: ThemeData(
-        fontFamily: 'SourceSansPro',
-      ),
-      home: HomePage(),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => QuoteProvider(),
+          ),
+        ],
+        builder: (context, child) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Quote Bee',
+              theme: ThemeData(
+                fontFamily: 'SourceSansPro',
+              ),
+              home: const ShowQuotes(),
+            ));
   }
 }
