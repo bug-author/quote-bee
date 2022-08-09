@@ -117,7 +117,7 @@ class ShowAllQuotes extends StatelessWidget {
                     )
                   : const Center(
                       child: Text(
-                      "No Quote in database",
+                      "No tweets in database",
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white,
