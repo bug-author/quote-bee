@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quote_bee/pages/show_quotes.dart';
+import 'package:quote_bee/pages/show_all_quotes.dart';
 import 'package:quote_bee/provider/quote_provider.dart';
-import './pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 fontFamily: 'SourceSansPro',
               ),
-              home: const ShowQuotes(),
+              home: const ShowAllQuotes(),
             ));
   }
 }

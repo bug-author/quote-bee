@@ -39,11 +39,27 @@ class DBHelper {
     return await openDatabase(path);
   }
 
-  // display inserted data
+  // display all inserted data
   static Future<List<Map<String, dynamic>>> selectAll() async {
     final db = await DBHelper.database();
 
-    return db.rawQuery("SELECT * FROM quotes LIMIT 500");
+    return db.rawQuery("SELECT * FROM quotes LIMIT 200");
+  }
+
+  // display most liked data
+  static Future<List<Map<String, dynamic>>> selectMostLiked() async {
+    final db = await DBHelper.database();
+
+    return db
+        .rawQuery('SELECT * FROM quotes ORDER BY "Like Count" DESC LIMIT 200');
+  }
+
+  // display most retweeted data
+  static Future<List<Map<String, dynamic>>> selectMostRetweeted() async {
+    final db = await DBHelper.database();
+
+    return db.rawQuery(
+        'SELECT * FROM quotes ORDER BY "Retweet Count" DESC LIMIT 200');
   }
 
   static Future insertFav(String table, Map<String, int> data) async {
