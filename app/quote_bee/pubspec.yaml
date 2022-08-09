@@ -27,8 +27,6 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  font_awesome_flutter: ^10.1.0
-  flutter_swipable:
   flutter:
     sdk: flutter
   sqflite:
@@ -38,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.0.3
   path_provider: ^2.0.11
+  intl:
 
 dev_dependencies:
   flutter_test:
@@ -79,11 +78,14 @@ flutter:
     - family: LibreFranklin
       fonts:
         - asset: assets\fonts\LibreFranklin.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  
     - family: SourceSansPro
       fonts:
         - asset: assets/fonts/SourceSansPro-Regular.ttf
+    
+    - family: Lato
+      fonts:
+        - asset: assets\fonts\Lato-Regular.ttf
 
   #
   # For details regarding fonts from package dependencies,

@@ -83,25 +83,18 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  flutter_swipable:
-    dependency: "direct main"
-    description:
-      name: flutter_swipable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-  font_awesome_flutter:
+  intl:
     dependency: "direct main"
     description:
-      name: font_awesome_flutter
+      name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "10.1.0"
+    version: "0.17.0"
   lints:
     dependency: transitive
     description:
