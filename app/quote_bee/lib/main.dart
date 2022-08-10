@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quote_bee/pages/show_all_quotes.dart';
+import 'package:quote_bee/constants.dart';
+import 'package:quote_bee/pages/quote_of_the_day.dart';
 import 'package:quote_bee/provider/quote_provider.dart';
 
 void main() {
@@ -23,9 +24,12 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Quote Bee',
               theme: ThemeData(
-                fontFamily: 'SourceSansPro',
+                backgroundColor: darkBlue,
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: darkBlue,
+                ),
               ),
-              home: const ShowAllQuotes(),
+              home: const QuotePage(category: 0),
             ));
   }
 }
