@@ -39,11 +39,17 @@ class DBHelper {
     return await openDatabase(path);
   }
 
-  // display all inserted data
-  static Future<List<Map<String, dynamic>>> selectAll() async {
+  // display random quote
+  static Future<List<Map<String, dynamic>>> selectQuoteOfTheDay() async {
     final db = await DBHelper.database();
 
-    return db.rawQuery("SELECT * FROM quotes LIMIT 200");
+    return db.rawQuery("SELECT * from quotes ORDER BY RANDOM() LIMIT 1");
+  }
+
+  static Future<List<Map<String, dynamic>>> selectRandom() async {
+    final db = await DBHelper.database();
+
+    return db.rawQuery("SELECT * from quotes ORDER BY RANDOM() LIMIT 20");
   }
 
   // display most liked data
@@ -51,7 +57,7 @@ class DBHelper {
     final db = await DBHelper.database();
 
     return db
-        .rawQuery('SELECT * FROM quotes ORDER BY "Like Count" DESC LIMIT 200');
+        .rawQuery('SELECT * FROM quotes ORDER BY "Like Count" DESC LIMIT 50');
   }
 
   // display most retweeted data
@@ -59,7 +65,7 @@ class DBHelper {
     final db = await DBHelper.database();
 
     return db.rawQuery(
-        'SELECT * FROM quotes ORDER BY "Retweet Count" DESC LIMIT 200');
+        'SELECT * FROM quotes ORDER BY "Retweet Count" DESC LIMIT 50');
   }
 
   static Future insertFav(String table, Map<String, int> data) async {
