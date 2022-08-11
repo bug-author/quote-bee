@@ -37,6 +37,7 @@ dependencies:
   provider: ^6.0.3
   path_provider: ^2.0.11
   intl:
+  fluttertoast:
   
 dev_dependencies:
   flutter_test:
