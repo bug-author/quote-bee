@@ -39,13 +39,6 @@ class DBHelper {
     return await openDatabase(path);
   }
 
-  // display random quote
-  static Future<List<Map<String, dynamic>>> selectQuoteOfTheDay() async {
-    final db = await DBHelper.database();
-
-    return db.rawQuery("SELECT * from quotes ORDER BY RANDOM() LIMIT 1");
-  }
-
   static Future<List<Map<String, dynamic>>> selectRandom() async {
     final db = await DBHelper.database();
 
@@ -68,22 +61,33 @@ class DBHelper {
         'SELECT * FROM quotes ORDER BY "Retweet Count" DESC LIMIT 50');
   }
 
-  static Future insertFav(String table, Map<String, int> data) async {
+  // display most retweeted data
+  static Future<List<Map<String, dynamic>>> selectFavourites() async {
     final db = await DBHelper.database();
 
-    var favStatus =
-        await db.rawQuery('SELECT * FROM quotes WHERE id ?', [data['id']]);
-
-    print(favStatus);
-    // todo
-    // ? first get done with the ui for home*
-    // ? *card - buttons on bottom right - share, mark favorite
-    // ? then start debugging this
-    // if(int.parse(favStatus) == 0){
-    // db.rawUpdate('UPDATE quotes SET favourite = ? WHERE id = ?', [1, data['id']]);
+    return db.rawQuery(
+        'SELECT * FROM quotes WHERE "Favourite" = 1 ORDER BY "index"');
   }
 
-  // without query insert
-  // return db.insert(table, data);
+  static Future insertFav(String url, int oldFavStatus) async {
+    final db = await DBHelper.database();
 
+    //! index is a keyword in sqlite so we use some other column
+    //! for filtering results
+    // * ideally, the database should have had index col named
+    // * as something else
+    if (oldFavStatus == 0) {
+      return db.rawUpdate('''
+                      UPDATE quotes 
+                      SET Favourite = ? 
+                      WHERE URL = ?
+                    ''', [1, url]);
+    } else {
+      return db.rawUpdate('''
+                      UPDATE quotes 
+                      SET Favourite = ? 
+                      WHERE URL = ?
+                    ''', [0, url]);
+    }
+  }
 }

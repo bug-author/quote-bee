@@ -34,8 +34,21 @@ class QuoteProvider extends ChangeNotifier {
               retweetCount: item['Retweet Count'],
               favourite: item['Favourite']))
           .toList();
-    } else {
+    } else if (index == 2) {
       final dataList = await DBHelper.selectMostRetweeted();
+
+      quoteItems = dataList
+          .map((item) => QuoteModel(
+              index: item['index'],
+              date: item['Date'],
+              tweet: item['Tweet'],
+              url: item['URL'],
+              likeCount: item['Like Count'],
+              retweetCount: item['Retweet Count'],
+              favourite: item['Favourite']))
+          .toList();
+    } else {
+      final dataList = await DBHelper.selectFavourites();
 
       quoteItems = dataList
           .map((item) => QuoteModel(
@@ -52,11 +65,8 @@ class QuoteProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future insertData(int id) async {
-    // toggle the favourite status
-    // DBHelper.insertFav('favourites', {'id': id});
-    // update favourite column where id is id
-    // "UPDATE quotes SET "
+  Future insertFav(String url, int oldfavStatus) async {
+    await DBHelper.insertFav(url, oldfavStatus);
     notifyListeners();
   }
 }
