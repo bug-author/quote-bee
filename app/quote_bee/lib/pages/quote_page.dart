@@ -23,7 +23,6 @@ class QuotePage extends StatelessWidget {
           'Quote Bee',
           style: TextStyle(
             fontSize: 35,
-            fontFamily: 'LibreFranklin',
           ),
         ),
         actions: const [
@@ -93,7 +92,7 @@ class QuotePage extends StatelessWidget {
                         Expanded(
                           child: SizedBox(
                               height: height * 0.75,
-                              width: width * 0.9,
+                              width: width * 0.95,
                               child: Quotes(
                                 height: height,
                                 width: width,
@@ -107,7 +106,6 @@ class QuotePage extends StatelessWidget {
                       "No tweets in database",
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.white,
                       ),
                     ));
             });
