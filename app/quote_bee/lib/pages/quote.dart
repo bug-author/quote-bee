@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:quote_bee/provider/quote_provider.dart';
 import '../model/quote_model.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Quotes extends StatelessWidget {
   const Quotes(
@@ -139,7 +140,11 @@ class Quotes extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.all(5),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            final text = quotes[index].tweet;
+                            final url = quotes[index].url;
+                            await Share.share('$text\n\n$url');
+                          },
                           icon: const Icon(
                             Icons.share,
                             color: Colors.blueAccent,
