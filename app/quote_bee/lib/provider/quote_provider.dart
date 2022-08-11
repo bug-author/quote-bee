@@ -9,20 +9,6 @@ class QuoteProvider extends ChangeNotifier {
   // call and implement sql select function
   Future<void> selectData(int index) async {
     if (index == 0) {
-      final dataList = await DBHelper.selectQuoteOfTheDay();
-
-      quoteItems = dataList
-          .map((item) => QuoteModel(
-                index: item['index'],
-                date: item['Date'],
-                tweet: item['Tweet'],
-                url: item['URL'],
-                likeCount: item['Like Count'],
-                retweetCount: item['Retweet Count'],
-                favourite: item['Favourite'],
-              ))
-          .toList();
-    } else if (index == 1) {
       final dataList = await DBHelper.selectRandom();
 
       quoteItems = dataList
@@ -35,7 +21,7 @@ class QuoteProvider extends ChangeNotifier {
               retweetCount: item['Retweet Count'],
               favourite: item['Favourite']))
           .toList();
-    } else if (index == 2) {
+    } else if (index == 1) {
       final dataList = await DBHelper.selectMostLiked();
 
       quoteItems = dataList

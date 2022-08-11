@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quote_bee/constants.dart';
-import 'package:quote_bee/pages/quote_of_the_day.dart';
+import 'package:quote_bee/pages/quote_page.dart';
 import 'package:quote_bee/provider/quote_provider.dart';
+import 'package:quote_bee/provider/theme_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,17 +19,19 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (context) => QuoteProvider(),
           ),
+          ChangeNotifierProvider(
+            create: (context) => ThemeProvider(),
+          ),
         ],
         builder: (context, child) => MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Quote Bee',
-              theme: ThemeData(
-                backgroundColor: darkBlue,
-                appBarTheme: const AppBarTheme(
-                  backgroundColor: darkBlue,
-                ),
+              themeMode: Provider.of<ThemeProvider>(context).themeMode,
+              theme: Themes.lightTheme,
+              darkTheme: Themes.darkTheme,
+              home: const QuotePage(
+                category: 0,
               ),
-              home: const QuotePage(category: 0),
             ));
   }
 }

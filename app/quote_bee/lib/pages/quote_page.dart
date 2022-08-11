@@ -3,6 +3,9 @@ import 'package:quote_bee/constants.dart';
 import 'package:quote_bee/pages/quote.dart';
 import 'package:quote_bee/provider/quote_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:quote_bee/widget/change_theme_widget.dart';
+
+import '../provider/theme_provider.dart';
 
 class QuotePage extends StatelessWidget {
   final int category;
@@ -14,18 +17,21 @@ class QuotePage extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: darkBlue,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Quote Bee',
           style: TextStyle(
-              fontSize: 35,
-              fontFamily: 'LibreFranklin',
-              fontWeight: FontWeight.bold,
-              foreground: Paint()..shader = linearGradient),
+            fontSize: 35,
+            fontFamily: 'LibreFranklin',
+          ),
         ),
-        elevation: 0.0,
+        actions: const [
+          ChangeThemeButtonWidget(),
+          SizedBox(
+            width: 20,
+          ),
+        ],
       ),
       body: FutureBuilder(
         future: Provider.of<QuoteProvider>(context, listen: false)
@@ -70,7 +76,11 @@ class QuotePage extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 22,
                                       color: index == category
-                                          ? Colors.white70
+                                          ? Provider.of<ThemeProvider>(context)
+                                                      .themeMode ==
+                                                  ThemeMode.dark
+                                              ? Colors.white
+                                              : Colors.black87
                                           : grey,
                                       fontWeight: FontWeight.bold,
                                     ),

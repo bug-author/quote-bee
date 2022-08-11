@@ -30,7 +30,7 @@ class Quotes extends StatelessWidget {
           ).format(quotes[index].retweetCount);
 
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,27 +40,24 @@ class Quotes extends StatelessWidget {
                   style: TextStyle(
                     fontSize: width * 0.05,
                     fontFamily: "Lato",
-                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(
-                  height: height * 0.08,
-                ),
+                Spacer(),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      DateFormat.yMMMMd()
+                      DateFormat.yMMMd()
                           .format(DateTime.parse(quotes[index].date)),
                       style: TextStyle(
                         fontSize: width * 0.04,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Lato",
-                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      '$likes Likes',
+                      '❤️ $likes',
                       style: TextStyle(
                         fontSize: width * 0.04,
                         fontFamily: "Lato",
@@ -69,7 +66,7 @@ class Quotes extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${rts} RTs',
+                      '🔁 ${rts}',
                       style: TextStyle(
                         fontSize: width * 0.04,
                         fontFamily: "Lato",
@@ -79,57 +76,59 @@ class Quotes extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
-                  height: height * 0.08,
-                ),
+                const Spacer(),
                 Container(
                   alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.red,
-                            width: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.red,
+                              width: 1,
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.favorite,
+                              color: Colors.red[300],
+                              size: 30,
+                            ),
                           ),
                         ),
-                        padding: const EdgeInsets.all(5),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.favorite,
-                            color: Colors.red[300],
-                            size: 30,
+                        SizedBox(
+                          width: width * 0.05,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.blueAccent,
+                              width: 1,
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.share,
+                              color: Colors.blueAccent,
+                              size: 30,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: width * 0.05,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.blueAccent,
-                            width: 1,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(5),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.share,
-                            color: Colors.blueAccent,
-                            size: 30,
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-                const Spacer(),
               ],
             ),
           );
