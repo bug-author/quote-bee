@@ -38,6 +38,7 @@ dependencies:
   path_provider: ^2.0.11
   intl:
   fluttertoast:
+  share_plus:
   
 dev_dependencies:
   flutter_test:
