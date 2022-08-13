@@ -26,6 +26,8 @@ class Themes {
         foreground: Paint()..shader = linearGradientDark,
       ),
     ),
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
   );
 
   static final lightTheme = ThemeData(
@@ -36,10 +38,12 @@ class Themes {
       backgroundColor: Colors.white,
       elevation: 0,
       titleTextStyle: TextStyle(
-        fontFamily: "Lato",
+        fontFamily: "LibreFranklin",
         fontWeight: FontWeight.bold,
-        foreground: Paint()..shader = linearGradientLight,
+        foreground: Paint()..shader = linearGradientDark,
       ),
     ),
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
   );
 }
