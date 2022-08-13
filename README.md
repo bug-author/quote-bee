@@ -16,6 +16,7 @@ A Flutter app serving 9k+ quotes from Mufti Menk's Twitter.
 - Light and Dark theme modes
 - Provider state management
 - Mark quotes as favourite/ unfavourite
+- copy to clipboard
 - Share as text to other social media or messaging services
 
 
