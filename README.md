@@ -21,6 +21,6 @@ A Flutter app serving 9k+ quotes from Mufti Menk's Twitter.
 
 
 ## Demo
-![](https://github.com/shy-tan/quote-bee/blob/demo-asset/quote_bee_final.gif)
+![](https://github.com/shy-tan/quote-bee/blob/demo-asset/demo.gif)
   
 ![banner with bg](https://user-images.githubusercontent.com/48406637/184313660-86f5eb23-3878-4e30-8423-c5d496697cc1.png)
