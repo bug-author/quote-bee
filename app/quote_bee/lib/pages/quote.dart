@@ -22,7 +22,6 @@ class Quotes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final quoteProvider = Provider.of<QuoteProvider>(context, listen: false);
-
     return PageView.builder(
       itemCount: quotes.length,
       itemBuilder: (context, int index) {
@@ -128,6 +127,7 @@ class Quotes extends StatelessWidget {
                               quotes[index].url, quotes[index].favourite);
 
                           String msg = "";
+
                           if (quotes[index].favourite == 0) {
                             msg = "Adding to Favourites";
                           } else {
@@ -143,24 +143,23 @@ class Quotes extends StatelessWidget {
                           );
                         },
                         icon: const Icon(
-                          Icons.favorite_outline_rounded,
+                          Icons.favorite_border_outlined,
+                          color: Colors.grey,
                           size: 30,
                         ),
                       ),
                       SizedBox(
                         width: width * 0.05,
                       ),
-                      Container(
-                        child: IconButton(
-                          onPressed: () async {
-                            final text = quotes[index].tweet;
-                            final url = quotes[index].url;
-                            await Share.share('$text\n\n$url');
-                          },
-                          icon: const Icon(
-                            Icons.ios_share_outlined,
-                            size: 30,
-                          ),
+                      IconButton(
+                        onPressed: () async {
+                          final text = quotes[index].tweet;
+                          final url = quotes[index].url;
+                          await Share.share('$text\n\n$url');
+                        },
+                        icon: const Icon(
+                          Icons.ios_share_outlined,
+                          size: 30,
                         ),
                       ),
                     ],

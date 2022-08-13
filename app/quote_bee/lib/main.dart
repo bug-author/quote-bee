@@ -15,23 +15,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => QuoteProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (context) => ThemeProvider(),
-          ),
-        ],
-        builder: (context, child) => MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Quote Bee',
-              themeMode: Provider.of<ThemeProvider>(context).themeMode,
-              theme: Themes.lightTheme,
-              darkTheme: Themes.darkTheme,
-              home: const QuotePage(
-                category: 0,
-              ),
-            ));
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => QuoteProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+        ),
+      ],
+      builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Quote Bee',
+        themeMode: Provider.of<ThemeProvider>(context).themeMode,
+        theme: Themes.lightTheme,
+        darkTheme: Themes.darkTheme,
+        home: const QuotePage(
+          category: 0,
+        ),
+      ),
+    );
   }
 }

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quote_bee/constants.dart';
 import 'package:quote_bee/pages/quote.dart';
 import 'package:quote_bee/provider/quote_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:quote_bee/widget/change_theme_widget.dart';
 import 'package:quote_bee/widget/horizontal_categories_widget.dart';
-
-import '../provider/theme_provider.dart';
 
 class QuotePage extends StatelessWidget {
   final int category;
@@ -47,13 +44,14 @@ class QuotePage extends StatelessWidget {
                             height: height, width: width, category: category),
                         Expanded(
                           child: SizedBox(
-                              height: height * 0.75,
-                              width: width * 0.95,
-                              child: Quotes(
-                                height: height,
-                                width: width,
-                                quotes: quoteProvider.quoteItems,
-                              ),),
+                            height: height * 0.75,
+                            width: width * 0.95,
+                            child: Quotes(
+                              height: height,
+                              width: width,
+                              quotes: quoteProvider.quoteItems,
+                            ),
+                          ),
                         ),
                       ],
                     )

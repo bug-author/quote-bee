@@ -4,8 +4,6 @@ import '../model/quote_model.dart';
 
 class QuoteProvider extends ChangeNotifier {
   List<QuoteModel> quoteItems = [];
-  Color borderColor = Colors.red;
-  Color iconColor = Colors.red;
 
   List<QuoteModel> mapDataListToModel(List<Map> dataList) {
     return dataList
@@ -44,7 +42,6 @@ class QuoteProvider extends ChangeNotifier {
 
   Future insertFav(String url, int oldfavStatus) async {
     await DBHelper.insertFav(url, oldfavStatus);
-
     notifyListeners();
   }
 }

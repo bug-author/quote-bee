@@ -28,12 +28,16 @@ class Themes {
     ),
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
+    iconTheme: const IconThemeData(
+      color: Colors.grey,
+    ),
   );
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     colorScheme: const ColorScheme.light(),
     primaryColor: Colors.white,
+    iconTheme: const IconThemeData(color: darkerBlue),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       elevation: 0,

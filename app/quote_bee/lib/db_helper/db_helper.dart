@@ -40,6 +40,8 @@ class DBHelper {
   }
 
   static Future<List<Map<String, dynamic>>> selectRandom() async {
+    initDb();
+
     final db = await DBHelper.database();
 
     return db.rawQuery("SELECT * from quotes ORDER BY RANDOM() LIMIT 20");
@@ -47,6 +49,7 @@ class DBHelper {
 
   // display most liked data
   static Future<List<Map<String, dynamic>>> selectMostLiked() async {
+    initDb();
     final db = await DBHelper.database();
 
     return db
@@ -55,6 +58,7 @@ class DBHelper {
 
   // display most retweeted data
   static Future<List<Map<String, dynamic>>> selectMostRetweeted() async {
+    initDb();
     final db = await DBHelper.database();
 
     return db.rawQuery(
@@ -63,6 +67,7 @@ class DBHelper {
 
   // display most retweeted data
   static Future<List<Map<String, dynamic>>> selectFavourites() async {
+    initDb();
     final db = await DBHelper.database();
 
     return db.rawQuery(
@@ -70,6 +75,7 @@ class DBHelper {
   }
 
   static Future insertFav(String url, int oldFavStatus) async {
+    initDb();
     final db = await DBHelper.database();
 
     //! index is a keyword in sqlite so we use some other column

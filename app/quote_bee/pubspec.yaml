@@ -39,6 +39,7 @@ dependencies:
   intl:
   fluttertoast:
   share_plus:
+  like_button:
   
 dev_dependencies:
   flutter_test:
