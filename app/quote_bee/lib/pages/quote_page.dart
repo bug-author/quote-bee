@@ -53,7 +53,7 @@ class QuotePage extends StatelessWidget {
                                 height: height,
                                 width: width,
                                 quotes: quoteProvider.quoteItems,
-                              )),
+                              ),),
                         ),
                       ],
                     )
