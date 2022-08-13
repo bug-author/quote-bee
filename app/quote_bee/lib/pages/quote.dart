@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:quote_bee/constants.dart';
 import 'package:quote_bee/provider/quote_provider.dart';
 import '../model/quote_model.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../provider/theme_provider.dart';
 
 class Quotes extends StatelessWidget {
   const Quotes(
@@ -47,6 +50,10 @@ class Quotes extends StatelessWidget {
                   fontSize: width * 0.05,
                   fontFamily: "Lato",
                   fontWeight: FontWeight.w500,
+                  color: Provider.of<ThemeProvider>(context).themeMode ==
+                          ThemeMode.dark
+                      ? Colors.white
+                      : darkerBlue,
                 ),
               ),
               const SizedBox(
@@ -131,17 +138,15 @@ class Quotes extends StatelessWidget {
                       SizedBox(
                         width: width * 0.05,
                       ),
-                      Container(
-                        child: IconButton(
-                          onPressed: () async {
-                            final text = quotes[index].tweet;
-                            final url = quotes[index].url;
-                            await Share.share('$text\n\n$url');
-                          },
-                          icon: const Icon(
-                            Icons.ios_share_outlined,
-                            size: 30,
-                          ),
+                      IconButton(
+                        onPressed: () async {
+                          final text = quotes[index].tweet;
+                          final url = quotes[index].url;
+                          await Share.share('$text\n\n$url');
+                        },
+                        icon: const Icon(
+                          Icons.ios_share_outlined,
+                          size: 30,
                         ),
                       ),
                     ],

@@ -26,6 +26,11 @@ class Themes {
         foreground: Paint()..shader = linearGradientDark,
       ),
     ),
+    iconTheme: const IconThemeData(
+      color: Colors.white,
+    ),
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
   );
 
   static final lightTheme = ThemeData(
@@ -36,10 +41,15 @@ class Themes {
       backgroundColor: Colors.white,
       elevation: 0,
       titleTextStyle: TextStyle(
-        fontFamily: "Lato",
+        fontFamily: "LibreFranklin",
         fontWeight: FontWeight.bold,
-        foreground: Paint()..shader = linearGradientLight,
+        foreground: Paint()..shader = linearGradientDark,
       ),
     ),
+    iconTheme: const IconThemeData(
+      color: darkBlue,
+    ),
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
   );
 }
