@@ -49,7 +49,9 @@ class Quotes extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const Spacer(),
+              const SizedBox(
+                height: 40,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -67,17 +69,27 @@ class Quotes extends StatelessWidget {
                     style: TextStyle(
                       fontSize: width * 0.04,
                       fontFamily: "Lato",
+                      fontWeight: FontWeight.bold,
                       color: Colors.red[400],
                     ),
                   ),
-                  Text(
-                    '🔁 ${rts}',
-                    style: TextStyle(
-                      fontSize: width * 0.04,
-                      fontFamily: "Lato",
-                      color: Colors.blueAccent,
-                    ),
-                  )
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.repeat_rounded,
+                        color: Colors.blueAccent,
+                      ),
+                      Text(
+                        rts,
+                        style: TextStyle(
+                          fontSize: width * 0.04,
+                          fontFamily: "Lato",
+                          color: Colors.blueAccent,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
               const Spacer(),
@@ -90,55 +102,36 @@ class Quotes extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.red,
-                            width: 1,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(5),
-                        child: IconButton(
-                          onPressed: () {
-                            // add to favourites in db
-                            quoteProvider.insertFav(
-                                quotes[index].url, quotes[index].favourite);
+                      IconButton(
+                        onPressed: () {
+                          // add to favourites in db
+                          quoteProvider.insertFav(
+                              quotes[index].url, quotes[index].favourite);
 
-                            String msg = "";
-                            if (quotes[index].favourite == 0) {
-                              msg = "Adding to Favourites";
-                            } else {
-                              msg = "Removed from Favourites";
-                            }
-                            Fluttertoast.showToast(
-                              msg: msg,
-                              toastLength: Toast.LENGTH_SHORT,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.black,
-                              textColor: Colors.white,
-                              fontSize: 16.0,
-                            );
-                          },
-                          icon: const Icon(
-                            Icons.favorite,
-                            color: Colors.redAccent,
-                            size: 30,
-                          ),
+                          String msg = "";
+                          if (quotes[index].favourite == 0) {
+                            msg = "Adding to Favourites";
+                          } else {
+                            msg = "Removed from Favourites";
+                          }
+                          Fluttertoast.showToast(
+                            msg: msg,
+                            toastLength: Toast.LENGTH_SHORT,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.black,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.favorite_outline_rounded,
+                          size: 30,
                         ),
                       ),
                       SizedBox(
                         width: width * 0.05,
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.blueAccent,
-                            width: 1,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(5),
                         child: IconButton(
                           onPressed: () async {
                             final text = quotes[index].tweet;
@@ -146,8 +139,7 @@ class Quotes extends StatelessWidget {
                             await Share.share('$text\n\n$url');
                           },
                           icon: const Icon(
-                            Icons.share,
-                            color: Colors.blueAccent,
+                            Icons.ios_share_outlined,
                             size: 30,
                           ),
                         ),

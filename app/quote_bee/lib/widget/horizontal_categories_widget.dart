@@ -54,7 +54,7 @@ class HorizontalCategories extends StatelessWidget {
                       ? Provider.of<ThemeProvider>(context).themeMode ==
                               ThemeMode.dark
                           ? Colors.white
-                          : Colors.black87
+                          : darkBlue
                       : grey,
                   fontWeight: FontWeight.bold,
                 ),
