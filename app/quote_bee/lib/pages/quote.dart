@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -41,12 +42,30 @@ class Quotes extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Spacer(),
-              Text(
-                quotes[index].tweet,
-                style: TextStyle(
-                  fontSize: width * 0.05,
-                  fontFamily: "Lato",
-                  fontWeight: FontWeight.w500,
+              InkWell(
+                onLongPress: () {
+                  Clipboard.setData(
+                    ClipboardData(
+                      text: quotes[index].tweet,
+                    ),
+                  ).then((value) {
+                    Fluttertoast.showToast(
+                      msg: "Copied to clipboard",
+                      toastLength: Toast.LENGTH_SHORT,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.black,
+                      textColor: Colors.white,
+                      fontSize: 16.0,
+                    );
+                  });
+                },
+                child: Text(
+                  quotes[index].tweet,
+                  style: TextStyle(
+                    fontSize: width * 0.05,
+                    fontFamily: "Lato",
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               const SizedBox(
