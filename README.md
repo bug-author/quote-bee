@@ -21,6 +21,8 @@ A Flutter app serving 9k+ quotes from Mufti Menk's Twitter.
 
 
 ## Demo
+[![Flutter Quotes App Demo](https://youtube-md.vercel.app/xLYBqP8ur9c/640/386)](https://www.youtube.com/watch?v=xLYBqP8ur9c)
+
 <p float="left">
 <img src=https://user-images.githubusercontent.com/48406637/184505830-ac042342-54c0-404b-85d8-214af8e050f1.png width=330px height=640px/> <img src=https://user-images.githubusercontent.com/48406637/184505836-906beb14-85ff-488b-96b1-13496bc63546.png width=330px height=640px/> <img src=https://user-images.githubusercontent.com/48406637/184505838-85bc0d59-8c12-4616-96b3-491bc122d8d1.png width=330px height=640px/>
 </p>
